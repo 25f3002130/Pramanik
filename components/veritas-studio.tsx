@@ -1,7 +1,6 @@
 "use client";
 
 import { ChangeEvent, useEffect, useMemo, useState } from "react";
-import Image from "next/image";
 import { AnalysisMode, demoExamples } from "@/lib/demo-content";
 
 const modeConfig: Record<
@@ -148,7 +147,11 @@ export function PramanikStudio() {
                 <p className="mt-2 text-sm text-ink-800">{imageFileName}</p>
                 {imagePreviewUrl ? (
                   <div className="relative mt-4 h-48 w-full overflow-hidden rounded-3xl">
-                    <Image src={imagePreviewUrl} alt="Selected preview" fill className="object-cover" unoptimized />
+                    <img
+                      src={imagePreviewUrl}
+                      alt="Selected preview"
+                      className="h-full w-full object-cover"
+                    />
                   </div>
                 ) : (
                   <div className="mt-4 flex h-48 items-center justify-center rounded-3xl bg-ink-100 text-sm text-ink-500">

@@ -2,37 +2,6 @@ import { PramanikStudio } from "@/components/veritas-studio";
 import { pitchSignals, processSteps, trustStats } from "@/lib/demo-content";
 
 export default function Page() {
-  const cloudflareSteps = [
-    {
-      step: "1",
-      title: "Create the Cloudflare account",
-      text: "Sign in, then open Workers & Pages. This is where you will host the frontend and the thin proxy."
-    },
-    {
-      step: "2",
-      title: "Install the Cloudflare CLI",
-      text: "Run npm i -g wrangler or use npx wrangler. Log in with wrangler login so the CLI can publish your project."
-    },
-    {
-      step: "3",
-      title: "Deploy the frontend",
-      text: "For this UI, use Cloudflare Pages or Pages + Next support. Keep the app client-heavy and stateless."
-    },
-    {
-      step: "4",
-      title: "Add the proxy worker",
-      text: "Create one worker for API key protection only. It should not store, cache, or log request content."
-    }
-  ];
-
-  const cloudflareChecklist = [
-    "Set environment variables for the API keys in the Cloudflare dashboard.",
-    "Turn off logging for request bodies and keep the worker stateless.",
-    "Use a separate route like /api/* for the proxy calls.",
-    "Test image, text, and video input paths locally before publishing.",
-    "Connect a custom domain only after the preview deployment works."
-  ];
-
   return (
     <main className="min-h-screen bg-[linear-gradient(180deg,#fbfcfb_0%,#f7f3ea_42%,#f8faf8_100%)]">
       <div className="absolute inset-0 -z-10 bg-pramanik-grid bg-[length:24px_24px] opacity-[0.35]" />
@@ -99,52 +68,6 @@ export default function Page() {
               <p className="mt-2 text-sm leading-6 text-ink-600">{step.description}</p>
             </article>
           ))}
-        </section>
-
-        <section className="rounded-[2rem] border border-white/70 bg-white/88 p-6 shadow-soft backdrop-blur">
-          <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.32em] text-brand-700">Cloudflare setup</p>
-              <h2 className="mt-2 font-display text-3xl text-ink-900">Start and complete deployment on Cloudflare</h2>
-            </div>
-            <p className="max-w-2xl text-sm leading-6 text-ink-600">
-              Use Cloudflare Pages for the website and a separate Worker for API protection. Keep both pieces stateless
-              so the privacy pitch stays true.
-            </p>
-          </div>
-
-          <div className="mt-5 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
-            <div className="grid gap-4">
-              {cloudflareSteps.map((item) => (
-                <article key={item.step} className="rounded-[1.5rem] border border-ink-200 bg-ink-50 p-5">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-100 text-sm font-semibold text-brand-800">
-                      {item.step}
-                    </div>
-                    <p className="text-lg font-semibold text-ink-900">{item.title}</p>
-                  </div>
-                  <p className="mt-3 text-sm leading-6 text-ink-700">{item.text}</p>
-                </article>
-              ))}
-            </div>
-
-            <div className="rounded-[1.5rem] border border-brand-200 bg-brand-50 p-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-700">Checklist</p>
-              <ul className="mt-4 space-y-3 text-sm leading-6 text-ink-800">
-                {cloudflareChecklist.map((item) => (
-                  <li key={item} className="rounded-2xl border border-white/70 bg-white/80 px-4 py-3 shadow-sm">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-5 rounded-[1.5rem] border border-brand-200 bg-brand-50 p-5 text-sm leading-6 text-ink-800">
-            Recommended route: <span className="font-semibold">Cloudflare Pages</span> for the website and{' '}
-            <span className="font-semibold">Cloudflare Workers</span> for the API proxy. That gives you a free,
-            privacy-friendly setup with one deployment target for the demo and a clean path into Round 2.
-          </div>
         </section>
       </section>
     </main>
